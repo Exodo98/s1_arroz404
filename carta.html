@@ -14,8 +14,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/estilos.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="3DRestaurantMenu/css/style.css" />
-	<link href='http://fonts.googleapis.com/css?family=Raleway:300,500|Arvo:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+		
   </head>
   <body>
 
@@ -26,32 +26,46 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container Carta">
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h1>
+                   Carta de L'creme
+                </h1>
+            </div>
+        <div class="row">
+            <div class="col-xs-offset-2 col-md-offset-2 col-xs-8 col-md-8">
+                <p id="Presentacion">
+                    Le presentamos con mucho gusto nuestra carta de platos mas esquisitos con curiosos y novedosos platos de nuestro chef que podran degustar gustosamente en nuestro restaurante.
+                </p>
+            </div>
+        </div>
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-sm-4 col-md-4" id="Entrantes">
           <img class="img-circle platos" src="img/entrantes.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;" data-toggle="modal" data-target="#ModalPrueba">
-          <h2>Entrantes</h2>
+          <h2 data-toggle="modal" data-target="#ModalPrueba">Entrantes</h2>
         </div><!-- /.col-md-4 -->
         <div class="col-sm-4 col-md-4" id="PrimerosPlatos">
-          <img class="img-circle platos" src="img/Primeros.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Primeros</h2>
+          <img class="img-circle platos" src="img/Primeros.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;" data-toggle="modal" data-target="#ModalPrueba">
+          <h2 data-toggle="modal" data-target="#ModalPrueba">Primeros</h2>
         </div><!-- /.col-md-4 -->
         <div class="col-sm-4 col-md-4" id="SegundosPlatos">
-          <img class="img-circle platos" src="img/segundos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Segundos</h2>
+          <img class="img-circle platos" src="img/segundos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;" data-toggle="modal" data-target="#ModalPrueba">
+          <h2 data-toggle="modal" data-target="#ModalPrueba">Segundos</h2>
           
         </div><!-- /.col-md-4 -->
       </div><!-- /.row -->
         
     <div class="row">
         <div class="col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2"  id="Postres">
-          <img class="img-circle platos" src="img/Postres.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Postres</h2>
+          <img class="img-circle platos" src="img/Postres.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;" data-toggle="modal" data-target="#ModalPrueba">
+          <h2 data-toggle="modal" data-target="#ModalPrueba">Postres</h2>
         </div><!-- /.col-md-4 -->
-        <div class="col-sm-4 col-md-4" id="Bebidas">
-          <img class="img-circle platos" src="img/vinos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Bebidas</h2>
+        <div class="col-sm-4 col-md-4" id="Vinos">
+          <img class="img-circle platos" src="img/vinos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;" data-toggle="modal" data-target="#ModalPrueba">
+          <h2 data-toggle="modal" data-target="#ModalPrueba">Vinos</h2>
           
         </div><!-- /.col-md-4 -->
       </div><!-- /.row -->
@@ -67,19 +81,12 @@
           </div>
         </div>
         
+        
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/javascript.js"></script>
-    <script type="text/javascript" src="3DRestaurantMenu/js/menu.js"></script>
-    <script type="text/javascript">
-			$(function() {
-
-				Menu.init();
-			
-			});
-		</script>
   </body>
 </html>
