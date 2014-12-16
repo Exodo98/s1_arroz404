@@ -1,0 +1,51 @@
+body{
+	width:100% !important;
+}
+#contenedor{
+	width:80% !important;
+	margin: 0 auto;
+}
+#contenedor2{
+	width:32% !important;
+	display:inline-block;
+	vertical-align: top;
+}
+#mapa{
+	border:0;
+	width:450px;
+}
+td{
+	text-align:center;
+}
+#planoMapa{
+	background-size:100% 100%;
+}
+#btnReservar{
+	display:none;
+	visibility: hidden;
+	margin-top:2%;
+}
+#imagen{
+	display:inline-block;
+}
+#dropdownlist{
+	width:90% !important;
+}
+#ddlMesas{
+	width:70% !important;
+}
+#txtNombre, #txtTelefono, #txtNumPersonas, #datepicker{
+	width:80% !important;
+	margin-top: 1%;
+	margin-bottom: 1.5%;
+}
+#horas, #minutos{
+	width:30% !important;
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1.5%;
+}
+.img-responsive{
+	max-width: 100%;
+	height: auto;
+}
