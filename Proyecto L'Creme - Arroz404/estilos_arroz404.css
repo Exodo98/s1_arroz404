@@ -1,0 +1,30 @@
+#general{
+	border: 3px solid black;
+	border-radius: 19px 19px 19px 19px;
+	-moz-border-radius: 19px 19px 19px 19px;
+	-webkit-border-radius: 19px 19px 19px 19px;
+	//width:50%;
+	//min-width:500px;
+	background:url(white_paperboard.jpg);
+	background-size:100% auto;
+}
+body{
+	background:url(bg.jpg) fixed;
+}
+.tab-panel{
+	background-color:rgb(245, 242, 242, 0.63);
+}
+
+.localizacion{
+	border: 3px solid black;
+	border-radius: 19px 19px 19px 19px;
+	-moz-border-radius: 19px 19px 19px 19px;
+	-webkit-border-radius: 19px 19px 19px 19px;
+	width:60%;
+	min-width:500px;
+	background:url(white_paperboard.jpg);
+}
+
+textarea {
+    resize: none;
+}

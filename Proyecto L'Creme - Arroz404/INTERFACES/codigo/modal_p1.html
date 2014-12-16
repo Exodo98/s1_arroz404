@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>jQuery UI Datepicker - Entrada de texto</title>
+	<link rel="stylesheet" href="../cssAntonio/estilos.css" type="text/css">
+	<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css">
+
+
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+	<script type="text/javascript">
+		var numMesas = 15;
+		var Restaurante = new Array(numMesas);
+		var EventoActiva =""; //esta variable obtendrá los valores de mapa o ddl dependiendo si quien es el que abre el modal
+		var MesaAReservar =""; //indice de la mesa que se va a reservar (0-N)
+		function RellenarArray()
+		{	
+			var aux ="";
+			for(i = 0; i<numMesas; i++)
+			{
+				Restaurante[i] = new Mesa((i+1), "LIBRE");
+			}
+			ActualizarSelect();
+		}
+		function Mesa(numero, estado)
+		{
+			this.numero = numero;
+			this.estado = estado;
+		}
+		function CompararFecha()
+		{
+			var fechaReserva = document.getElementById('datepicker').value;
+			var hoy = new Date()
+			var array_fecha = fechaReserva.split("/")
+
+			var dia=array_fecha[0];
+			var mes=array_fecha[1]-1;
+			var anyo=array_fecha[2];
+
+			var fechaDate = new Date(anyo,mes,dia)
+			if(hoy<fechaDate){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function GenerarReserva()
+		{
+			if(CompararFecha()){
+				if(document.getElementById('ddlMesas').selectedIndex > 0 || EventoActiva=="mapa")
+				{					
+					if(validarNulo()==0){
+						if(EventoActiva=="mapa")
+						{
+							Restaurante[MesaAReservar].estado = "RESERVADO";
+						}
+						else
+						{
+							var numero = document.getElementById('ddlMesas').value;
+							Restaurante[numero].estado = "RESERVADO";
+						}
+						alert("Reserva Realizada");
+						LimpiarTxt();
+						ActualizarSelect();
+						$('#myModal').modal('hide')
+					}
+					else
+					{
+						alert("NO PUEDEN HABER CAMPOS VACÍOS");
+					}
+				}
+				else
+				{
+					alert("SELECCIONA UNA MESA");
+				}
+			}
+			else{
+				alert("comprueba la fecha");
+			}
+		}
+		function LimpiarTxt()
+		{
+			document.getElementById('txtNombre').value = "";
+			document.getElementById('txtTelefono').value = "";
+			document.getElementById('datepicker').value = "";
+		}
+		function ActualizarSelect()
+		{
+			var Auxiliar="";
+			var Informacion ="";
+			document.getElementById('ddlMesas').innerHTML = "";
+			document.getElementById('ddlMesas').innerHTML += ('<option>'+"Selecciona una mesa..."+'</option>');
+			for(contador=0; contador<numMesas; contador++)
+			{
+				Auxiliar = Restaurante[contador];
+				Informacion = Auxiliar.numero + " - " + Auxiliar.estado;
+				if(Auxiliar.estado != "RESERVADO")
+				{
+					EventoActiva="ddl";
+					document.getElementById('ddlMesas').innerHTML +=('<option value="' + contador +'" data-toggle="modal" data-target="#myModal">'+Informacion+'</option>');
+				}
+				else
+				{
+					document.getElementById('ddlMesas').innerHTML +=('<option value="' + contador +'">'+Informacion+'</option>');
+				}
+			}
+		}
+		function AveriguarNavegador()
+		{		
+			if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1)
+			{
+				document.getElementById('btnReservar').style.visibility = "visible";
+				document.getElementById('btnReservar').style.display = "inline";
+			}
+			else
+			{
+				document.getElementById('btnReservar').style.visibility = "hidden";
+				document.getElementById('btnReservar').style.display = "none";
+			}
+		}
+		function MirarEstado(num)
+		{
+			if(Restaurante[num-1].estado == "RESERVADO")
+			{
+				alert("MESA NO DISPONIBLE");
+			}
+			else
+			{
+				MesaAReservar=num-1;
+				EventoActiva="mapa";
+				$('#myModal').modal({
+					show: true
+				})
+				
+				//data-toggle="modal" data-target="#myModal"
+			}
+		}
+		function validarNulo(){
+			var Errores = "";
+			if(document.getElementById('txtNombre').value==0)
+			{
+				Errores += "La casilla nombre está vacía\n";
+			}
+			if(document.getElementById('txtTelefono').value==0)
+			{
+				Errores += "La casilla teléfono está vacía\n";
+			}
+			if(document.getElementById('datepicker').value==0)
+			{
+				Errores += "La casilla de la fecha está vacía";
+			}
+			if(Errores.length>0)
+			{
+				alert(Errores);
+				//return false;
+			}
+			//else{
+			//	return true;
+			//}
+			return Errores.length;
+		}
+		function validarNumeros(evt)
+		{  
+			var charCode = (evt.which) ? evt.which : evt.keyCode  
+
+			if ((charCode >= 48 && charCode <= 57)||(charCode>= 96 && charCode<=106)||(charCode==8)) {
+				return true;  
+			}
+
+			else { 
+				return false;  
+			}  
+		}
+		function validarLetras(evt)
+		{
+			tecla = (document.all) ? evt.keyCode : evt.which;
+			if (tecla==8) return true; // backspace
+			if (tecla==32) return true; // espacio
+			if (evt.ctrlKey && tecla==86) { return true;} //Ctrl v
+			if (evt.ctrlKey && tecla==67) { return true;} //Ctrl c
+			if (evt.ctrlKey && tecla==88) { return true;} //Ctrl x
+			 
+			patron = /[a-zA-Z]/; //patron
+			 
+			te = String.fromCharCode(tecla);
+			return patron.test(te); // prueba de patron
+		}	
+	</script>
+
+	<script>
+	$(function () {
+		$.datepicker.setDefaults($.datepicker.regional["es"]);
+		$("#datepicker").datepicker({
+			dateFormat: 'dd/mm/yy',
+			firstDay: 1
+		});
+	});
+	</script>
+</head>
+<body onload="LimpiarTxt(); RellenarArray(); AveriguarNavegador()">
+
+	<div id="contenedor">
+		<div id="imagen">
+			<table id="mapa">
+				<tr>
+					<td> 
+						<map name="mapa1"> 
+							<area id="mesa1" class="reservado" shape="rect" alt="mesa1" coords="27,170,75,190" onclick="MirarEstado(1)" href="#"> 
+							<area id="mesa2" shape="rect" alt="mesa2" coords="27,270,75,290" onclick="MirarEstado(2)" href="#"> 
+							<area id="mesa3" shape="rect" alt="mesa3" coords="27,375,75,395" onclick="MirarEstado(3)" href="#"> 
+							<area id="mesa4" shape="rect" alt="mesa4" coords="350,55,380,80" onclick="MirarEstado(4)" href="#"> 
+							<area id="mesa5" shape="rect" alt="mesa5" coords="350,145,380,170" onclick="MirarEstado(5)" href="#"> 
+							<area id="mesa6" shape="rect" alt="mesa6" coords="350,235,380,260" onclick="MirarEstado(6)" href="#"> 
+							<area id="mesa7" shape="rect" alt="mesa7" coords="350,325,380,350" onclick="MirarEstado(7)" href="#">
+							<area id="mesa8" shape="circle" alt="mesa8" coords="298,66,25" onclick="MirarEstado(8)" href="#"> 
+							<area id="mesa9" shape="circle" alt="mesa9" coords="297,189,25" onclick="MirarEstado(9)" href="#"> 
+							<area id="mesa10" shape="circle" alt="mesa10" coords="298,297,25" onclick="MirarEstado(10)" href="#"> 
+							<area id="mesa11" shape="circle" alt="mesa11" coords="272,400,25" onclick="MirarEstado(11)" href="#"> 
+							<area id="mesa12" shape="circle" alt="mesa12" coords="218,347,25" onclick="MirarEstado(12)" href="#"> 
+							<area id="mesa13" shape="circle" alt="mesa13" coords="134,324,25" onclick="MirarEstado(13)" href="#">
+							<area id="mesa14" shape="circle" alt="mesa14" coords="143,400,25" onclick="MirarEstado(14)" href="#"> 
+							<area id="mesa15" shape="circle" alt="mesa15" coords="200,223,58" onclick="MirarEstado(15)" href="#"> 							
+						</map> 
+						<img src="../imagenes/plano.png" alt="plano restaurante" class="img-responsive" usemap="#mapa1"> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="contenedor2">
+			<div id="dropdownlist">
+				<select class="form-control" id="ddlMesas">
+
+				</select>
+			</div>
+			<button type="button" id="btnReservar" class="btn btn-secundary btn-lg" data-toggle="modal" data-target="#myModal">
+			Reservar mesa
+			</button>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content .col-md-8 .col-md-offset-2 .col-xs8 .col-xs-offset-2">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Reserva</h4>
+				</div>
+				<div class="modal-body">
+					<label>Nombre:</label><input class="form-control input-xs" type="text" id="txtNombre" onkeydown="return validarLetras(event)">
+					<label>Tel&eacute;fono:</label><input class="form-control input-xs" type="text" id="txtTelefono" maxlength="9" onkeydown="return validarNumeros(event)">
+					<label>Fecha:</label><input class="form-control input-xs" type="text" id="datepicker">
+					<label>Hora:</label>
+					<select class="form-control" id="horas">
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+						<option>16</option>
+						
+						<option>20</option>
+						<option>21</option>
+						<option>22</option>
+						<option>23</option>
+					</select>
+					<label>:</label>
+					<select class="form-control" id="minutos">
+						<option>00</option>
+						<option>15</option>
+						<option>30</option>
+						<option>45</option>
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="LimpiarTxt()">Close</button>
+					<button type="button" class="btn btn-primary" onclick="GenerarReserva()">Realizar Reserva</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script src="../bootstrap/dist/js/jquery.ui.datepicker-es.js"></script>
+	<script src="../bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html> 
