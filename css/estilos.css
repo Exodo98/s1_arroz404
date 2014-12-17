@@ -1,19 +1,21 @@
 body{
     text-align: center;
-    padding: 0px;
-    margin: 0px;
     background-image: url("../images/bg.jpg");
 }
 h2{
     color: black;
     text-shadow: 1px 1px 0 #fff, 2px 2px 0 #e6b741;
 }
-.container {
+.Blanco{
     background-color: rgba(255, 255, 255, 0.7);
-    margin: 0px;
-    width: 90% !important;
-    margin:100px auto;
-    padding: 5px;
+    margin-top: -60px;
+
+}
+.Carta {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+#Logo{
+    margin-top: -35px;
 }
 .platos{
     
@@ -43,6 +45,39 @@ h2{
 #ModalEntrante .modal-dialog{
     margin-top: 200px;
 }
+.Blanco p{
+    text-align: justify;
+}
+
+#fin{
+    background-color: rgba(86, 87, 88, 0.9);
+    height: 100%;
+    width: 100%;
+    text-align:center;
+    border-top: 1px solid #2F4F4F;
+}
+#fin div{
+  padding: 10px;
+}
+#fin div a{
+  font-variant: small-caps;
+  text-decoration:none;
+  color:#000000;
+}
+#fin div a:hover{
+  color:#008080;
+}
+#columnaCentralFin{
+    border-left: 1px solid #2F4F4F;
+}
+#ModuloFacefook{
+    
+}
+#ModuloMapa{
+    border-left: 1px solid #2F4F4F;
+}
+
+
 @media screen and (max-width: 800px) {
     #ModalPrueba .modal-dialog{
         width: 80%;
@@ -52,4 +87,74 @@ h2{
     #ModalPrueba .modal-dialog {
         width: 100%;
     }
+
+}
+#contenedor{
+	width:80% !important;
+	margin: 0 auto;
+}
+
+#mapa{
+	border:0;
+	width:450px;
+}
+td{
+	text-align:center;
+}
+#planoMapa{
+	background-size:100% 100%;
+}
+#btnReservar{
+	display:none;
+	visibility: hidden;
+	margin-top:2%;
+}
+
+#txtNombre, #txtTelefono, #txtNumPersonas, #datepicker{
+	width:80% !important;
+	margin-top: 1%;
+	margin-bottom: 1.5%;
+}
+#horas, #minutos{
+	width:30% !important;
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1.5%;
+}
+.im2g-responsive{
+	max-width: 100%;
+	height: auto;
+}
+
+#general{
+	border: 3px solid black;
+	border-radius: 19px 19px 19px 19px;
+	-moz-border-radius: 19px 19px 19px 19px;
+	-webkit-border-radius: 19px 19px 19px 19px;
+	background-image:url("../img/white_paperboard.jpg")!important;
+    background-color: none!important;
+	background-size:100% auto;
+}
+.tab-panel{
+	background-color:rgb(245, 242, 242, 0.63);
+}
+
+.localizacion{
+	border: 3px solid black;
+	border-radius: 19px 19px 19px 19px;
+	-moz-border-radius: 19px 19px 19px 19px;
+	-webkit-border-radius: 19px 19px 19px 19px;
+	width:60%;
+	min-width:500px;
+	background:url(../images/white_paperboard.jpg);
+}
+
+textarea {
+    resize: none;
+}
+.pestanyas {
+    background-color: rgba(255, 255, 255, 0.6);
+    list-style: outside none none;
+    margin-bottom: 0;
+    padding-left: 0;
 }

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <title>Libro de visistas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <meta name="description" content="Sliding Image Panels with CSS3" />
+        <meta name="keywords" content="sliding, background-image, css3, panel, images, slider" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style4.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+        <script src="js/bootstrap.js"></script>
+        <script>
+            var com = 3;
+            var a = 1;
+            var b = 1;
+            var c = 1;  
+            var d = 1;
+            var e = 1;
+            var fecha = new Date();
+                var texto = '<tr class=\"warning\"><td><strong>Mariano Alejandro Abdala</strong></td><td align=\"right\"><label id=\"1\">0</label><span class=\"glyphicon glyphicon-heart-empty\" onclick=\"megusta(1)\"></span> 25-07-2014 <span class=\"glyphicon glyphicon-time\"></span></td></tr><tr><td colspan=\"2\">Un sitio fenomenal, un servicio fantastico.<br></br></td></tr><tr class=\"warning\"><td><strong>Antonio Calleja Benito </strong></td><td align=\"right\"><label id=\"2\">0</label><span class=\"glyphicon glyphicon-heart-empty\" onclick=\"megusta(2)\"></span> 02-09-2014 <span class=\"glyphicon glyphicon-time\"></span></td></tr><tr><td colspan=\"2\">La comida muy sabrosa, lo recomiendo.<br></br></td></tr>'; 
+            
+            function megusta(i)
+            {
+                if(i == 1)
+                {
+                document.getElementById(i).innerHTML = a;
+                a = a + 1;
+                }
+                if(i == 2)
+                {
+                document.getElementById(i).innerHTML = b;
+                b = b + 1;
+                }
+                if(i == 3)
+                {
+                document.getElementById(i).innerHTML = c;
+                c = c + 1;
+                }
+                if(i == 4)
+                {
+                document.getElementById(i).innerHTML = d;
+                d = d + 1;
+                }
+                if(i == 5)
+                {
+                document.getElementById(i).innerHTML = e;
+                e = e + 1;
+                }
+            }
+            
+            function publicar()
+            {
+                texto = texto + '<tr class=\"warning\"><td><strong>' + document.getElementById('nombre').value + '</strong></td><td align=\"right\"><label id=\"' + com + '\">0</label><span class=\"glyphicon glyphicon-heart-empty\" onclick=\"megusta(' + com + ')\"></span>' + fecha.getDate() +'-'+(fecha.getMonth() + 1) +'-'+fecha.getFullYear()+ '<span class=\"glyphicon glyphicon-time\"></span></td></tr><tr><td colspan=\"2\">' + document.getElementById('coment').value + '.<br></br></td></tr>';
+                
+                document.getElementById('mensajes').innerHTML = texto;
+                com = com + 1;
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img id="Logo" src="img/logo_mini.png" alt="Logo"/></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Inicio</a></li>
+                <li><a href="#about">Reservas</a></li>
+                <li><a href="#contact">Carta</a></li>
+                <li><a href="#contact">Contacto</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+        <div class="container">
+            <div id="fondo">
+            <table class="table" id="mensajes">
+            <tr class="warning">
+                <td>
+                    <strong>
+                        Mariano Alejandro Abdala
+                 </strong>
+                </td>
+                <td>
+                   <label id="1">0</label><span class="glyphicon glyphicon-heart-empty" onclick="megusta(1)"></span> 25-07-2014 <span class="glyphicon glyphicon-time"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Un sitio fenomenal, un servicio fantastico.
+                    <br/><br/>
+                </td>
+            </tr>
+            <tr class="warning">
+                <td>
+                    <strong>
+                        Antonio Calleja Benito 
+                    </strong>
+                </td>
+                <td>
+                   <label id="2">0</label><span class="glyphicon glyphicon-heart-empty" onclick="megusta(2)"></span> 02-09-2014 <span class="glyphicon glyphicon-time"></span>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                    La comida muy sabrosa, lo recomiendo.
+
+                    <br/><br/>
+                </td>
+            </tr>
+            </table>
+</div>
+    <div class="TITULO">
+
+        DEJA TU COMENTARIO
+
+    </div>
+            <div class="CASILLAS">
+                <form id="formulario">
+<br>
+                    Nombre:  
+                    <br/><br/>
+                    <input class="fondocasillausuario" type="text" size="42" name="email" id="nombre">
+                    <br/><br/>
+                    Comentarios:  
+                    <br/><br/>
+                    <textarea class="fondocasillausuario" rows="3" cols="40" name="comentarios" id="coment"></textarea>
+                    <br/><br/>
+                    <br/><br/>
+                    <input  class="btn btn-warning" type="reset" value=" Borrar ">
+                    <input  class="btn btn-warning" type="button" onclick="publicar()" value=" Publicar ">
+                </form>
+            </div>
+        </div>
+</body>
+</html>
