@@ -18,6 +18,34 @@
 		
   </head>
   <body>
+      
+      <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img id="Logo" src="img/logo_mini.png" alt="Logo"/></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Inicio</a></li>
+                <li><a href="#about">Reservas</a></li>
+                <li><a href="#contact">Carta</a></li>
+                <li><a href="#contact">Contacto</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
 
 
 
@@ -80,6 +108,27 @@
             </div>
           </div>
         </div>
+             <div class="pie_de_pagina" id="fin">
+                <div class="container">
+                    <div class="row" id="PieExtra">
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="ModuloFacefook">
+                            <?php
+                            include("ModuloFacebook.php");
+                            ?>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="columnaCentralFin">
+                            <?php
+                            include("ModuloInformacion.php");
+                            ?>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="ModuloMapa">
+                            <?php
+                            include("ModuloMapa.php");
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
         
     <!-- Bootstrap core JavaScript
