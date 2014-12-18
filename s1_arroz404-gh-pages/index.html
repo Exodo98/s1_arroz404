@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Carousel Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img id="Logo" src="img/logo_mini.png" alt="Logo"/></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Inicio</a></li>
+                <li><a href="reserva.html">Reservas</a></li>
+                <li><a href="carta.html">Carta</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="visitas.html">Libro visitas</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="./images/2.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>L'Creme.</h1>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./images/3.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>L'Creme</h1>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./images/4.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>L'Creme</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container Blanco">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Restaurante L'creme</br> <span class="text-muted">Sobre nosotros</span></h2>
+            <p class="lead">El Restaurante L'Crême nace a principios de 2014 pero no es hasta finales de ese mismo año cuando los actuales dueños, Antonio, Mariano, Alberto y Adrián, se hacen cargo de él.</p>
+            </p>
+        </div>
+        <div class="col-md-12">
+            <p class="lead">
+            Tras duros meses de trabajo, el restaurante se ha hecho un hueco con una cocina internacional de evidente gusto francés.
+            Sus sala decorada por Mariano le dan un ambiente acogedor, que combinado con la mano de los chefs Alberto, Antonio y Adrián, hacen de este un lugar único en la zona.
+            Otro elemento que marca la diferencia del Restaurante L'Crême es su amplio jardín, acondicionado para realizar eventos, como pueden ser bodas, comuniones, bautizos, 
+            reuniones, comidas de empresa y hasta románticas cenas en las noches de verano.
+            Encontrará el Restaurante L'Crême en el Paseo de Colón con vistas a la Playa de Poniente y al lado del Balcón del Mediterráneo en la localidad de Benidorm.
+        </div>
+      </div>
+
+
+    </div><!-- /.container -->
+        <div class="pie_de_pagina" id="fin">
+                <div class="container">
+                    <div class="row" id="PieExtra">
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="ModuloFacefook">
+                            <?php
+                            include("ModuloFacebook.php");
+                            ?>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="columnaCentralFin">
+                            <?php
+                            include("ModuloInformacion.php");
+                            ?>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4" id="ModuloMapa">
+                            <?php
+                            include("ModuloMapa.php");
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+   	<title>Contacta con L'Creme</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/estilos.css"/>
+ <script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script type="text/javascript">
+    
+	$('#myTab a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	
+	$('#myTab a[href="#profile"]').tab('show') // Select tab by name
+	$('#myTab a:first').tab('show') // Select first tab
+	$('#myTab a:last').tab('show') // Select last tab
+	$('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
+	 })
+	 
+	
+	function validarNomApe() 
+	{
+		var i, nomape, validar;
+		nomape = document.getElementById("NomApe").value; 
+		i = 0;
+		validar = true;
+		while(i <= nomape.length && validar == true) 
+		{
+			if(nomape[i] == ' ')
+			{
+				if (i + 1 < nomape.length) 
+				{
+					validar = false;
+				}
+			}
+			i++;
+		}
+		
+		return validar; 
+	}
+	
+	
+	function validarFecha(){
+		var fecha, validar, valor;
+		 validar = true;
+	     fecha = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/; 
+		 valor = document.getElementById("FecNac").value; 
+	     if ((valor.match(fecha)) && (valor!=''))
+			{
+				if (validarEdad())
+				{
+					validar = false;
+				}
+	     	} 
+		
+		return validar;
+	}
+	function validarEdad()
+	{
+		var fec, array_fecha, anyo, mes, dia, validar, hoy;
+		fec = document.getElementById("FecNac").value;
+		array_fecha = fec.split("/"); 
+		anyo = array_fecha[2];
+		mes = array_fecha[1];
+		dia = array_fecha[0];
+		validar = false;
+		hoy=new Date();
+		dia_18 = 0;
+
+		while(new Date(anyo,(mes-1),++dia) < hoy && validar == false)
+		{
+			if (dia_18 > 365*18)
+			{
+				validar = true;
+			}
+			dia_18++;
+		}
+		return validar;
+	}
+	function validarcorreo()
+	{
+		var correo, validar;
+		correo = document.getElementById("mail").value;
+		validar = false;
+		
+		if(correo == "" || correo == " ")
+		{
+			validar = true;
+		}
+		
+		return validar;
+	}
+	
+	function ValidarTodo() 
+	{
+		var error1 = "", error2 = "",error4 = "";
+		
+		if(validarNomApe())
+		{
+			error1 = " - El Nombre o Apellidos que ha introducido son incorrectos.";
+			
+		}
+		if(validarFecha())
+		{
+			error2 = " - La fecha que ha introducida es incorrecta.\n  Debe de tener el formato 'dd/mm/aa' y ser mayor de 18 años.";
+		}
+		
+		if(validarcorreo())
+		{
+			error4 = " - El campo de correo electrónico es obligatorio y ha de estar compuesto tipo: direccion@dominio.com, rellénelo por favor";
+		}
+
+		if (validarNomApe() == false && validarFecha() == false)
+		{
+			alert("Los datos son correctos y han sido enviados exitosamente, recibirás noticias nuestras como contestación proximamente, Gracias! :-D");
+		}
+		else
+		{
+			alert("SE HAN PRODUCIDO LOS SIGUIENTES ERRORES:\n\n\n "  + error1 + "\n\n" + error2 +  "\n\n" + error4 + "\n\n" + "Por favor corríjalos y vuelva a intentarlo.");
+		}
+	}
+	
+	
+    </script>
+
+</head>
+<body>
+    <form>
+    <div class="navbar-wrapper">
+      <div class="container">
+<br>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img id="Logo" src="img/logo_mini.png" alt="Logo"/></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="index.html">Inicio</a></li>
+                <li><a href="reserva.html">Reservas</a></li>
+                <li><a href="carta.html">Carta</a></li>
+                <li class="active"><a href="contacto.html">Contacto</a></li>
+                <li><a href="visitas.html">Libro visitas</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+	<div class="container">
+	<div role="tabpanel">
+
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs pestanyas" role="tablist" id="myTab">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Contacto mediante Formulario</a></li>
+			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dónde estamos</a></li>
+			<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Información Adicional</a></li>
+		  </ul>
+	
+		  <!-- Tab panes -->
+		  <div class="tab-content" id="myTabContent">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				
+					<h1><span class="label label-primary">Contacta con L'Creme</span></h1>
+					
+					<div id="general" class="container"><br><br>
+					<div class="alert alert-warning">Los campos con los símbolos <b>**</b> son OBLIGATORIOS, si se rellenan incorrectamente
+					o no se rellenan, el formulario no se enviará.</div>
+						<table class="centro">
+							<tr>
+								<td><h4><span class="label label-default">** Nombre y Apellidos:</span></h4></td>
+								<td><input id="NomApe" class="form-control" type="text" placeholder="Nombre y Apellidos..."></td>
+							</tr>
+							<tr>
+								<td><h4><span class="label label-default">** Fecha de nacimiento:</span></h4></td>
+								<td><input id="FecNac" type="email" class="form-control" id="exampleInputEmail2" placeholder="Formato dd/mm/aa..."></td>
+							</tr>
+							<tr>
+							<td><h4><span class="label label-default">** Correo electrónico:</span></h4></td>
+							<td><div class="input-group">
+							  <span class="input-group-addon">@</span>
+							  <input id="mail" type="text" class="form-control" size="50" placeholder="Correo electrónico...">
+							</div></td>
+							</tr>
+							<tr>
+								<td><h4><span class="label label-default">Teléfono</span></h4></td>
+								<td><div class="input-group">
+							  <span class="input-group-addon">+34</span>
+							  <input type="text" class="form-control" placeholder="Teléfono Móvil...">
+							</div></td>
+							</tr>
+							<tr>
+							<td></td>
+							<td><div class="input-group">
+							  <span class="input-group-addon">965</span>
+							  <input type="text" class="form-control" placeholder="Teléfono Fijo...">
+							</div></td>
+							</tr>
+							
+							<tr>
+							<td><h4><span class="label label-default">Motivo de Contacto:</span></h4>
+							<div class="checkbox">
+							<label>
+							  <input type="checkbox"> <b>Sugerencia de mejora.</b>
+							</label>
+						  </div>
+							<div class="checkbox">
+							<label>
+							  <input type="checkbox"> <b>Reclamación o queja.</b>
+							</label>
+						  </div>
+							<div class="checkbox">
+							<label>
+							  <input type="checkbox"> <b>Dudas y consultas.</b>
+							</label>
+						  </div>
+							<div class="checkbox">
+							<label>
+							  <input type="checkbox"> <b>Otras razones.</b>
+							</label>
+						  </div></td>
+							</tr>
+							<TR>
+							<TD><h4><span class="label label-default">Desarrolla el motivo:</span></h4></TD>
+							<br>
+								<TD><textarea class="form-control" rows="3" placeholder="Motivo..."></textarea></TD>
+							<br>
+							</TR>
+							
+						</table>
+						
+						<br><br>
+						<div class="checkbox">
+							<label>
+							  <input type="checkbox"> He leído y acepto los términos y condiciones y la política de Privacidad
+							</label>
+						  </div><br><br>
+						<table width="50%" border="0" align="center" cellpadding="10" cellspacing="0">
+						<tr>
+						<td><div align="center">
+						<button type="button" class="btn btn-default" onclick="ValidarTodo()">Enviar Consulta</button>
+						</div></td>
+						<td><div align="center">
+						<button type="reset" class="btn btn-default">Borrar Datos</button>
+						</div></td>
+						<td><div align="center">
+						<button type="button" class="btn btn-default">Volver a Inicio</button>
+						</div></td>
+						</tr>
+						</table><br>
+	
+		</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="profile">
+			<br><br>
+				<div class="panel panel-info"><b>Esta es la localización exacta de nuestro restaurante. Gracias a Google Maps
+				teneis la opción de "Cómo llegar" desde vuestro ordenador, table o smartphone. Pulsa "Cómo llegar" y
+				os calculará la ruta más corta y accesible hasta donde se encuentra L'Creme. ¡Oh la la!</b></div>
+				<div class="localizacion">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2623.550871370193!2d2.3347971999999997!3d48.8858379!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e4ff5fdee29%3A0xbd76805b243827b4!2sRue+Lepic%2C+75018+Paris%2C+Francia!5e0!3m2!1ses!2ses!4v1418395764812" width="800" height="600" frameborder="0" style="border:0"></iframe></div>
+		  
+			</div>
+		  
+		  
+		  <div role="tabpanel" class="tab-pane" id="messages" align="left"><br><br>
+		  
+			<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"><b>HORARIO DE APERTURA</b></h3>
+			  </div>
+			  <div class="panel-body">
+				<table class="table table-hover">
+				<tr class="warning">
+					<td><b>Temporada del año</b></td>
+					<td><b>De Lunes a Viernes</b></td>
+					<td><b>Sábados</b></td>
+					<td><b>Domingos y Festivos</b></td>
+					
+					
+				</tr>
+				<tr class="active">
+					<td>Invierno</td>
+					<td>De 7:30 - 14:00 horas y de 16:00 - 21:00 horas</td>
+					<td>De 10:00 - 17:00 horas</td>
+					<td>De 10:00 - 16:00</td>
+				
+				
+				</tr>
+				
+				<tr class="active">
+					<td>Otoño</td>
+					<td>De 7:30 - 15:00 horas y de 16:00 - 22:00 horas</td>
+					<td>De 9:30 - 16:00 horas</td>
+					<td>De 10:00 - 17:00</td>
+				
+				
+				</tr>
+				<tr class="active">
+					<td>Verano</td>
+					<td>De 7:30 - 15:00 horas y de 16:00 - 24:00 horas</td>
+					<td>De 9:00 - 22:00 horas</td>
+					<td>De 10:00 - 21:00</td>
+				
+				
+				</tr>
+				<tr class="active">
+					<td>Primavera</td>
+					<td>De 7:30 - 14:00 horas y de 15:30 - 22:00 horas</td>
+					<td>De 10:00 - 18:00 horas</td>
+					<td>De 10:30 - 19:00</td>
+				
+				
+				</tr>
+				</table>
+			  </DIV>
+			  
+			  <div class="panel-heading">
+				<h3 class="panel-title"><b>DATOS DE CONTACTO</b></h3>
+			  </div>
+			  <div class="panel-body">
+				Puedes contactar con nosotros en distintos paises:<br><br>
+				<table class="table table-hover">
+				<tr class="warning">
+					<td><b>Páis</b></td>
+					<td><b>Número de Teléfono</b></td>
+					<td><b>FAX</b></td>
+					<td><b>E-mails de contacto</b></td>
+					<td><b>Sitio web nacional</b></td>
+				</tr>
+				<tr class="active">
+					<td>Francia</td>
+					<td>977 889 555</td>
+					<td>956 999 444</td>
+					<td>contact@lecreme.com</td>
+					<td>www.lecremerestaurant.fr</td>
+				
+				</tr>
+				<tr class="active">
+					<td>España</td>
+					<td>996 358 645</td>
+					<td>978 529 369</td>
+					<td>contacto@lecreme.com</td>
+					<td>www.lecremerestaurant.es</td>
+				
+				</tr>
+				<tr class="active">
+					<td>Portugal</td>
+					<td>856 987 256</td>
+					<td>658 965 745</td>
+					<td>contato@lecreme.com</td>
+					<td>www.lecremerestaurant.pt</td>
+				
+				</tr>
+				<tr class="active">
+					<td>Alemania</td>
+					<td>789 542 321</td>
+					<td>879 632 541</td>
+					<td>kontakt@lecreme.com</td>
+					<td>www.lecremerestaurant.gr</td>
+				
+				</tr>
+				<tr class="active">
+					<td>Italia</td>
+					<td>782 459 789</td>
+					<td>123 658 965</td>
+					<td>contatto@lecreme.com</td>
+					<td>www.lecremerestaurant.it</td>
+				
+				</tr>
+				<tr class="active">
+					<td>Reino unido</td>
+					<td>321 545 678</td>
+					<td>639 857 236</td>
+					<td>contact@lecreme.com</td>
+					<td>www.lecremerestaurant.uk</td>
+				
+				</tr>
+				<tr class="active">
+					<td>Resto Europa</td>
+					<td>312 546 765</td>
+					<td>569 487 568</td>
+					<td>contact_eu@lecreme.com</td>
+					<td>www.lecremerestaurant.com</td>
+				
+				</tr>
+				  
+				</table>	
+				
+			  </div><br><br>
+			  
+			  
+			</div>
+		  
+		  </div>
+
+	
+	
+		</div>
+
+	</div>
+        </form>
+</body>
+</html>
